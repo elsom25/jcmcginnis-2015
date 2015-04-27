@@ -4,7 +4,6 @@ do ($ = this.Zepto) ->
   name = (i) -> "kitten-#{i}"
   valid_names = (name x for x in [1..NUM_COLOURS])
   add_name = (i, $el) ->
-    console.log "add_name", i, $el
     $el.removeClass(valid_names.join(" "));
     $el.addClass( name( i % NUM_COLOURS + 1 ) )
 
@@ -21,7 +20,7 @@ do ($ = this.Zepto) ->
 
       new_sections = sections.clone()
       new_sections.each ->
-        if section_count < NUM_COLOURS
+        if section_count < NUM_COLOURS - 1
           section_count += 1
         else
           section_count = 0

@@ -25,16 +25,18 @@ section { height:75%; position:relative; overflow:hidden; width:100%;
   }
 
   .magic {
-    position: absolute; top:0; bottom:0; left:0; right:0;
-    clip: rect(auto, auto, auto, auto);
-    clip-path: inset(0);
+    position:absolute; top:0; bottom:0; left:0; right:0;
+    @include media(em(575)) { clip:rect(auto, auto, auto, auto); clip-path:inset(0); }
   }
 
   h1, h2, p {
-    @include backface-visibility(hidden);
-    font-size:mr(1)-.5; font-weight:300; line-height:1.75; margin:0; padding:0 .75em; position:fixed; left:0; right:0; top:40%; transform:translate(0, -40%);
+    position:absolute; font-size:mr(1)-.5;
+    font-weight:300; line-height:1.75; margin:0; padding:0 .75em; left:0; right:0; top:40%; transform:translate(0, -40%);
 
-    @include media(em(575)) { font-size:mr(1); }
+    @include media(em(575)) {
+      @include backface-visibility(hidden);
+      position:fixed; font-size:mr(1);
+    }
   }
   a {
     border-bottom:2px solid $background-color; color:$font-color; text-decoration:none;

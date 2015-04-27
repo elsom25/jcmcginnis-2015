@@ -8,13 +8,13 @@ $section-colors: #e44f4f #e8734f #ed924f #f1a74f #fffa4f #c8db43 #8ec139 #62ae31
 
 html, body {
   @include transition(font-size .5s);
-  background:$background-color; color:$font-color; font-family:'Source Code Pro', monospace, sans-serif; font-weight:300; height:100%; text-align:center; text-transform:uppercase;
+  background:$background-color; color:$font-color; font-family:'Source Code Pro', monospace, sans-serif; height:100%; text-align:center; text-transform:uppercase;
 }
 
 main, section { height:100%; min-height:em(250); width:100%; }
 section {
-  height:50%; position:relative;
-  background-attachment:fixed; background-position:center center; background-repeat:no-repeat; background-size:auto 50%;
+  height:75%; position:relative; overflow:hidden; width:100%;
+
   @for $i from 1 through length($section-colors) {
     $current-color: nth($section-colors, $i);
     $bg: mix($current-color, $background-color, 35%);
@@ -25,9 +25,17 @@ section {
     }
   }
 
+  .magic {
+    position: absolute; top:0; bottom:0; left:0; right:0;
+    clip: rect(auto, auto, auto, auto);
+    clip-path: inset(0);
+  }
+
   h1, h2, p {
-    font-size:mr(2) - .35; line-height:1.75; margin:0; position:relative; top:45%;
-    @include media(em(575)) { font-size:mr(2); }
+    @include backface-visibility(hidden);
+    font-size:mr(1)-.5; font-weight:300; line-height:1.75; margin:0; padding:0 .75em; position:fixed; left:0; right:0; top:40%; transform:translate(0, -40%);
+
+    @include media(em(575)) { font-size:mr(1); }
   }
   a {
     border-bottom:2px solid $background-color; color:$font-color; text-decoration:none;

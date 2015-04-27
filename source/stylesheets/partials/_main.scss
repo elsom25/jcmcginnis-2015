@@ -1,6 +1,6 @@
 $font-color: #000;
 $background-color: #fff;
-$section-colors: #FF4D4D #FF6A4D #FF894D #FFAD4D #FFD34D #FFF14D #4DFFCD #4DE9FF #4DADFF #4D80FF #465BFF #8959FD #B259FD;
+$section-colors: #ff4d4d #ff6a4d #ff894d #ffad4d #ffd34d #fff14d #4dffcd #4de9ff #4dadff #4d80ff #465bff #8959fd #b259fd;
 
 html, body {
   @include transition(font-size .5s);

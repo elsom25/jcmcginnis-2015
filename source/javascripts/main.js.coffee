@@ -3,7 +3,6 @@ do ($ = this.Zepto) ->
 
   name = (i) -> "kitten-#{i}"
   valid_names = (name x for x in [1..NUM_COLOURS])
-  console.log valid_names
 
   $ ->
     $( "a[rel=external]" ).attr( "target", "_blank" )

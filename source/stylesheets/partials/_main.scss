@@ -1,0 +1,41 @@
+$base-accent: #de3831;
+$font-color: #444;
+
+body { color:$font-color; font-family:'Oxygen', sans-serif; margin-left:em(80); margin-right:em(40); max-width:em(625); }
+h1, h2, p { margin:0; }
+h1 { font-weight:700; font-family:'Raleway', sans-serif; color:#000;
+  font-size: mr(0) - .75;
+  @include media(em(575)) { font-size:mr(0); }
+}
+h2 { font-size:mr(1); font-weight:300; }
+p { font-size:mr(3); line-height:1.6; margin-bottom:1em; padding:0.25em; }
+a {
+  @include fancy-link($base-accent);
+  border-bottom:1px solid lighten($font-color, 50%); border-bottom:1px solid transparentize($font-color, .625);
+  color:$font-color; padding:0.05em 0.15em 0; text-decoration:none; }
+
+header { margin-top:10%; }
+.color { background:$base-accent; position:fixed; top:0; left:0; bottom:0; width:em(40); }
+
+//
+// fun colour effect
+::selection { color:white; }
+::-moz-selection { color:white; }
+
+.red    { @include fun(#DE3831); }
+.yellow { @include fun(#FCD450); }
+.teal   { @include fun(#009AA6, #007F8A); }
+.orange { @include fun(#E98300, #AC6100); }
+.purple { @include fun(#57068C); a { @include fancy-link(#57068C, transparentize(#CCAAFF, 0.5)); } }
+.green  { @include fun(#B6BF00, #747800); }
+.pink   { @include fun(#e0249a); a { @include fancy-link(#e0249a, transparentize(#FF88DD, 0.5)); } }
+.blue   { @include fun(#0073CF); a { @include fancy-link(#0073CF, transparentize(#77BBFF, 0.5)); } }
+
+
+//
+// animations
+.a1         { @include fade-in(0.50s); }
+.a2         { @include fade-in(0.75s); }
+.a3         { @include fade-in(1.00s); }
+h1, section { @include fade-in(0.00s, 2s); }
+.color      { @include fade-in(0.00s, 3s); }

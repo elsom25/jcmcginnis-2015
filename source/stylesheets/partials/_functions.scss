@@ -1,0 +1,33 @@
+// ****************************************************************************
+// Mixins
+// ****************************************************************************
+
+// Animation helpers
+@include keyframes(fadeIn) {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@mixin fade-in($delay, $length:1s) {
+  @include animation(fadeIn $length $delay both);
+}
+
+// Links!
+@mixin fancy-link($accent-color, $background-color:transparentize($accent-color, 0.5)) {
+  &:hover { background:$background-color; border-bottom:3px solid $accent-color; }
+}
+
+// fun!
+@mixin fun($color, $dark-color:darken($color, 25%)) {
+            .color { background:$color; }
+       ::selection { background:$color; }
+  ::-moz-selection { background:$color; }
+
+  a { @include fancy-link($dark-color, transparentize($color, 0.5)); }
+}
+
+// Font Sizing
+@function mr($l) { @return modular-rythm($l); }
+@function modular-rythm($level) {
+  $n: 3 - $level;
+  @return golden-ratio(em(14), $n);
+}

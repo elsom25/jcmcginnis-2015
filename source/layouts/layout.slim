@@ -21,9 +21,6 @@ html.no-js(lang="")
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"
 
   body(class=page_classes)
-    /[if lt IE 8]
-      p.browsehappy You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank" rel="external">upgrade your browser</a> to improve your experience.
-
     == yield
 
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"

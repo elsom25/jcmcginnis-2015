@@ -1,31 +1,51 @@
 // ****************************************************************************
-// Mixins
+// Functions
 // ****************************************************************************
 
-// Animation helpers
-@include keyframes(fadeIn) {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
-@mixin fade-in($delay, $length:1s) {
-  @include animation(fadeIn $length $delay both);
-}
+/*
+ * Calculates the sRGB luma of a colour.
+ *
+ * Math nicked from a great Thoughtbot article by Reda Lemeden:
+ * http://robots.thoughtbot.com/closer-look-color-lightness
+ */
 
-// Links!
-@mixin fancy-link($accent-color, $background-color:transparentize($accent-color, 0.5)) {
-  &:hover { background:$background-color; border-bottom:3px solid $accent-color; }
-}
+@function luma($c) {
+  $-local-red: red(rgba($c, 1.0));
+  $-local-green: green(rgba($c, 1.0));
+  $-local-blue: blue(rgba($c, 1.0));
 
-// fun!
-@mixin fun($color, $dark-color:darken($color, 25%)) {
-            .color { background:$color; }
-       ::selection { background:$color; }
-  ::-moz-selection { background:$color; }
-
-  a { @include fancy-link($dark-color, transparentize($color, 0.5)); }
+  @return (0.2126 * $-local-red  +
+           0.7152 * $-local-green +
+           0.0722 * $-local-blue) / 255;
 }
 
-// Font Sizing
+@function pick-visible-color($bg, $colors) {
+  $bg-luma: luma($bg);
+  $color: white;
+  $diff: 0;
+
+  @each $c in $colors {
+    $c-luma: luma($c);
+    $c-diff: abs($bg-luma - $c-luma);
+    @if $c-diff > $diff {
+      $color: $c;
+      $diff: $c-diff;
+    }
+  }
+  @return $color;
+}
+
+@function visible-complement($current, $bg) {
+  $complement: complement($current);
+  @return pick-visible-color($bg, (
+    darken($complement, 15%),
+    darken($complement, 5%),
+    $complement,
+    lighten($complement, 5%),
+    lighten($complement, 15%)
+  ));
+}
+
 @function mr($l) { @return modular-rythm($l); }
 @function modular-rythm($level) {
   $n: 3 - $level;

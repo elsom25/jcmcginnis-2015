@@ -1,5 +1,5 @@
 do ($ = this.Zepto) ->
-  NUM_COLOURS = 13
+  NUM_COLOURS = 16
 
   name = (i) -> "kitten-#{i}"
   valid_names = (name x for x in [1..NUM_COLOURS])

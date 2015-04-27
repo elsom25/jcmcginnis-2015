@@ -1,6 +1,10 @@
 $font-color: #000;
 $background-color: #fff;
 $section-colors: #ff4d4d #ff6a4d #ff894d #ffad4d #ffd34d #fff14d #4dffcd #4de9ff #4dadff #4d80ff #465bff #8959fd #b259fd;
+$section-colors: #e44f4f #e8734f #ed924f #f1a74f #fffa4f #c8db43 #8ec139 #62ae31 #61be9a #4f9ac3 #4077b7 #3153b5 #3539ae #673bac #ad45b2 #c3477d;
+
+::-moz-selection { background:transparentize($background-color, .5); }
+::selection { background:transparentize($background-color, .5); }
 
 html, body {
   @include transition(font-size .5s);
@@ -13,11 +17,16 @@ section {
   background-attachment:fixed; background-position:center center; background-repeat:no-repeat; background-size:auto 50%;
   @for $i from 1 through length($section-colors) {
     $current-color: nth($section-colors, $i);
-    &.kitten-#{$i} { background-color:$current-color; }
+    $bg: mix($current-color, $background-color, 35%);
+    &.kitten-#{$i} {
+      background-color:$current-color;
+      ::-moz-selection { background:$bg; color:visible-complement($current-color, $bg); }
+      ::selection { background:$bg; color:visible-complement($current-color, $bg); }
+    }
   }
 
   h1, h2, p {
-    font-size:mr(2) - .35; line-height:1.5; margin:0; position:relative; top:45%;
+    font-size:mr(2) - .35; line-height:1.75; margin:0; position:relative; top:45%;
     @include media(em(575)) { font-size:mr(2); }
   }
   a {

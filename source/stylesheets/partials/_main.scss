@@ -8,7 +8,7 @@ html, body {
 }
 
 h1, h2, p {
-  font-size:mr(3); line-height:1.5; margin:0; position:relative; top:45%;
+  font-size:mr(2) - .35; line-height:1.5; margin:0; position:relative; top:45%;
   @include media(em(575)) { font-size:mr(2); }
 }
 a {
@@ -22,6 +22,6 @@ section {
   background-attachment:fixed; background-position:center center; background-repeat:no-repeat; background-size:auto 50%;
   @for $i from 1 through length($section-colors) {
     $current-color: nth($section-colors, $i);
-    &.kitten-#{$i} { background-color: $current-color; }
+    &.kitten-#{$i} { background-color:$current-color; }
   }
 }

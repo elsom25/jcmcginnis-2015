@@ -38,11 +38,13 @@
 @function visible-complement($current, $bg) {
   $complement: complement($current);
   @return pick-visible-color($bg, (
+    darken($complement, 25%),
     darken($complement, 15%),
     darken($complement, 5%),
     $complement,
     lighten($complement, 5%),
-    lighten($complement, 15%)
+    lighten($complement, 15%),
+    lighten($complement, 25%)
   ));
 }
 

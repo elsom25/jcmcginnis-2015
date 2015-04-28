@@ -30,7 +30,7 @@ do ($ = this.Zepto) ->
       $( "main" ).append( new_sections )
 
   $ ->
-    sections = $('section')
+    sections = $( "section" )
     section_count = sections.length - 1
     $(window).scroll -> scroll( sections )
 

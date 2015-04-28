@@ -12,31 +12,35 @@ html, body {
 }
 
 main, section { height:100%; min-height:em(250); width:100%; }
-section { height:75%; position:relative; overflow:hidden; width:100%;
+section { height:55%; position:relative; overflow:hidden; width:100%;
+
+  .magic {
+    position:absolute; top:0; bottom:0; left:0; right:0; border-bottom:3px solid;
+    clip:rect(auto, auto, auto, auto); clip-path:inset(0);
+  }
 
   @for $i from 1 through length($section-colors) {
     $current-color: nth($section-colors, $i);
     $bg: mix($current-color, $background-color, 35%);
     .kitten-#{$i} {
       background-color:$current-color;
+      border-bottom-color:darken($current-color, 20%);
       ::-moz-selection { background:$bg; color:visible-complement($current-color, $bg); }
       ::selection { background:$bg; color:visible-complement($current-color, $bg); }
+      i.fa {
+        color:mix($current-color, $background-color, 65%);
+        position:fixed; font-size:15em; z-index:0;
+        left:0; right:0; top:48%; transform:translate(0, -50%);// rotate(22.5deg * ($i - 1));
+        @include media(em(575)) { font-size:25em; }
+      }
     }
-  }
-
-  .magic {
-    position:absolute; top:0; bottom:0; left:0; right:0;
-    @include media(em(575)) { clip:rect(auto, auto, auto, auto); clip-path:inset(0); }
   }
 
   h1, h2, p {
-    position:absolute; font-size:mr(1)-.5;
+    position:absolute; font-size:mr(1)-.5; z-index:5;
     font-weight:300; line-height:1.75; margin:0; padding:0 .75em; left:0; right:0; top:40%; transform:translate(0, -40%);
 
-    @include media(em(575)) {
-      @include backface-visibility(hidden);
-      position:fixed; font-size:mr(1);
-    }
+    @include media(em(575)) { font-size:mr(1); }
   }
   a {
     border-bottom:2px solid $background-color; color:$font-color; text-decoration:none;

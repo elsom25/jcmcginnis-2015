@@ -23,11 +23,8 @@ html.no-js(lang="")
   body(class=page_classes)
     == yield
 
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"
-    script window.Zepto || document.write("<script src='javascripts/vendor/zepto.min.js'><\/script>")
-
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.7.0/lodash.min.js"
-    script window._ || document.write("<script src='javascripts/vendor/lodash.min.js'><\/script>")
+    = partial "layouts/remote_library", locals: { reference: "Zepto", file: "zepto.min", remote: "zepto/1.1.4/zepto.min" }
+    = partial "layouts/remote_library", locals: { reference: "_", file: "lodash.min", remote: "lodash.js/3.7.0/lodash.min" }
 
     = javascript_include_tag "main.js"
     = javascript_include_tag "//squaresend.com/squaresend.js"

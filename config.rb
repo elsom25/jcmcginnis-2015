@@ -1,3 +1,5 @@
+Slim::Engine.disable_option_validator!
+
 ###
 # Helpers
 ###

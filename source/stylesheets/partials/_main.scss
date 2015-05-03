@@ -15,12 +15,10 @@ section { height:65%; position:relative; overflow:hidden; width:100%;
   @for $i from 1 through length($section-colors) {
     $current-color: nth($section-colors, $i);
     $bg: mix($current-color, $background-color, 35%);
-    .kitten-#{$i} {
-      background-color:$current-color;
-      border-bottom-color:darken($current-color, 20%);
+    .kitten-#{$i} { background-color:$current-color; border-bottom-color:darken($current-color, 20%);
       ::-moz-selection { background:$bg; color:visible-complement($current-color, $bg); }
       ::selection { background:$bg; color:visible-complement($current-color, $bg); }
-      i.fa { color:mix($current-color, $background-color, 65%); position:absolute; font-size:15em; z-index:0; left:0; right:0; top:48%;
+      i.fa { color:mix($current-color, $background-color, 80%); position:absolute; font-size:15em; z-index:0; left:0; right:0; top:48%;
         @include transform(translate(0, -50%));
         @include media(em(575)) { font-size:20em; }
       }

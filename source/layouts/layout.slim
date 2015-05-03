@@ -1,19 +1,20 @@
 doctype html
-html.no-js(lang="")
+html.no-js(lang="en-ca")
   head
     meta charset="utf-8"
     meta http-equiv="x-ua-compatible" content="ie=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     meta name="description" content="Jesse McGinnis. Developer. Leader. Student."
 
-    title= current_page.data.title || "Jesse McGinnis"
+    title Jesse McGinnis
 
     = stylesheet_link_tag "//fonts.googleapis.com/css?family=Source+Code+Pro:300"
     = stylesheet_link_tag "vendor.css"
     = stylesheet_link_tag "style.css"
 
     link rel="author" href="humans.txt"
-    = favicon_tag "favicon.ico", id: :favicon
+    link rel="apple-touch-icon" href="apple-touch-icon.png"
+    = favicon_tag "favicon.ico"
 
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"

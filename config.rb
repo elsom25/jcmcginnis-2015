@@ -35,12 +35,3 @@ configure :build do
   activate :asset_hash
   activate :relative_assets
 end
-
-###
-# Compass
-###
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
